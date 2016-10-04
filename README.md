@@ -1,9 +1,14 @@
 # Brute Force Sudoku Solver
+
 Jacob Caggese
+
 Michael Crinite
+
 Alexander Luongo
 
-# 10 04 2016
+
+10/04/2016
+
 
 A Sudoku Solver that uses a brute force/backtracking approach
 
