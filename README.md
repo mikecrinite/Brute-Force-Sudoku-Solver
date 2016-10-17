@@ -1,4 +1,4 @@
-# Brute Force Sudoku Solver
+# Brute Force/Backtracking Sudoku Solver
 
 This is a Sudoku solver that uses a brute force/backtracking approach. It is written entirely in Java.
 
