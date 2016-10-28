@@ -1,12 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package sudoku;
-
-import java.util.ArrayList;
-
 /**
  * This class will attempt to fill a Sudoku puzzle with a solution.
  * 
@@ -28,7 +19,7 @@ public class Filler {
     int cSize;                  // The amount of columns in one block
     int rSize;                  // The amount of rows in one block
     
-    Checker checker = new Checker();
+    Checker checker = Checker.getInstance();
     
     /**
      * Driver method.
