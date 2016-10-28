@@ -80,9 +80,7 @@ public class Filler {
                         board[i][j] = index;    //Try to fill with index
                         if(checker.checkRowOrCol(board[i])
                                 && checker.checkRowOrCol(columnToArray(board, j))
-                                && checker.checkBox(board, i, j, 
-                                        index, rSize, cSize)
-                                ){
+                                && checker.checkBox(board, i, j, rSize, cSize)){
                                 solved = fillBoard(board, i, 0); //Next space
                         }
                         if(!solved){

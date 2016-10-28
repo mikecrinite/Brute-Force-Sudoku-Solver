@@ -1,5 +1,3 @@
-package sudoku;
-
 import java.io.File;
 
 /**
