@@ -1,15 +1,42 @@
-package sudoku;
-
 import java.util.HashSet;
 
 /**
- * Contains methods that check that sudoku rules are met when numbers are added into puzzle
- * Arrays are put into HashSets to check for duplicates in each row,column,and box.
- * @author Alex Luongo 
- * @version 1.0 9/24/16
+ * 1.0: Contains methods that check that sudoku rules are met when numbers are added into puzzle
+ *      Arrays are put into HashSets to check for duplicates in each row,column,and box.
+ *
+ * 1.1: Changed datatype from HashSet to Array-Based Abstract Datatype for checking in O(1) rather
+ *      than risking an O(N^2)
+ *
+ *      [ 0 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , ... ]
+ *
+ *      The ADT will initialize to false. When a value is found in the area of the puzzle being checked
+ *      then ADT[value] will become true. This way, if the value is found in the same area of the puzzle
+ *      a second time, the ADT will already be true, indicating that the value had previously been found
+ *      in the part of the puzzle being checked.
+ *
+ * @author Alex Luongo, Michael Crinite
+ * @version 1.1 10/28/16
  */
-public class Checker {	
-	
+public class Checker {
+    private static Checker INSTANCE = null;
+    private static boolean[] checkADT = new boolean[20];    // Array ADT for checking puzzle
+                                                            // Initializes to false
+                                                            // Default size 20 because that accommodates
+                                                            //      a very large puzzle size
+
+    /**
+     * Constructor for Checker
+     */
+    private Checker(){
+    }
+
+    public static Checker getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new Checker();
+        }
+        return INSTANCE;
+    }
+
     /**
      * Checks the input column to see if Sudoku rules are met
      * @param (col)column to be checked
