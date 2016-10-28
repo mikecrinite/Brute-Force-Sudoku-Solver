@@ -78,8 +78,8 @@ public class Filler {
                 if(board[i][j]==0){             //0 represents empty
                     while(!solved){             //While the puzzle is unsolved
                         board[i][j] = index;    //Try to fill with index
-                        if(checker.checkRow(board[i]) 
-                                && checker.checkColumn(columnToArray(board, j))
+                        if(checker.checkRowOrCol(board[i])
+                                && checker.checkRowOrCol(columnToArray(board, j))
                                 && checker.checkBox(board, i, j, 
                                         index, rSize, cSize)
                                 ){
