@@ -6,12 +6,12 @@ This Sudoku solver reads a file from the command line. If it is properly formatt
 
 The solver checks each cell sequentially, from top left to bottom right, and if empty, it attempts to fill the cell. It does this by filling the space in a temporary puzzle and then making a recursive call to the solving method, passing that puzzle as if the space was solved. If that does not lead to a solution, it simply backtracks to that call and tries to fill the space with something else until it has exhausted all possibilities.
 
-The solver works for any Sudoku puzzle size W x H (where W and H are the dimensions of a single box/partition of the puzzle). It can easily be modified to support only the typical 3 x 3 (81 cell) puzzle.
+The solver works for any Sudoku puzzle size W x H (where W and H are the dimensions of a single box/partition of the puzzle) up to a puzzle with 400 spaces. It can easily be modified to support only the typical 3 x 3 (81 cell) puzzle.
 
 ------------------------------------
 - The input class was written by Jacob Caggese
 - The Filler class was written by me, Michael Crinite
-- The Checker class was written by Alexander Luongo
+- The Checker class was written by Alexander Luongo, and edited by Michael Crinite for version 2
 - The SudokuDriver class was written by me, Michael Crinite
 
 
@@ -32,4 +32,3 @@ The solver works for any Sudoku puzzle size W x H (where W and H are the dimensi
 0 0 4 6 5 0
 5 0 2 0 4 0
 ```
-
