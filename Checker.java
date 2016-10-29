@@ -57,11 +57,13 @@ public class Checker {
      */
     public boolean checkRowOrCol(int[] arr){
         restore();                              // Reset the checker array to false
+        int curr = 0;
         for(int i = 0; i < arr.length;i++){     // For each value in the array to check
-            if(!checkADT[arr[i]]){              // If the checker has not already found that value
-                checkADT[arr[i]] = true;        // Mark the value as found in the checkADT
-            }else{                              // else
-                return false;                   // The checker has already found that value, return false
+            curr = arr[i];
+            if(checkADT[curr]){                 // If the checker has not already found that value
+                return false;                   // Mark the value as found in the checkADT
+            }else if(curr > 0){                              // else
+                checkADT[curr] = true;          // The checker has already found that value, return false
             }
         }
         return true;                            // Return true only if the entire array is legit

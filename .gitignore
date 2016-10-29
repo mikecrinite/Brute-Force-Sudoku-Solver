@@ -65,4 +65,7 @@ $RECYCLE.BIN/
 # IntelliJ files
 *.iml
 */META-INF/*
+META-INF/
 .idea/
+out/
+/out/
