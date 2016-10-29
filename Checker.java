@@ -60,32 +60,36 @@ public class Checker {
         int curr = 0;
         for(int i = 0; i < arr.length;i++){     // For each value in the array to check
             curr = arr[i];
-            if(checkADT[curr]){                 // If the checker has not already found that value
-                return false;                   // Mark the value as found in the checkADT
-            }else if(curr > 0){                              // else
-                checkADT[curr] = true;          // The checker has already found that value, return false
+            if(checkADT[curr]){                 // If the checker has already found the value
+                return false;                   // Return false
+            }else if(curr > 0){                 // else, if the space is not blank
+                checkADT[curr] = true;          // Mark the value in the space as having been filled.
             }
         }
-        return true;                            // Return true only if the entire array is legit
+        return true;                            // Return true only if the entire array passes.
     }
 
 
     /**
      * Checks the input box to make sure Sudoku rules are met
+     *
      * @param board, width and height of a box
      * @return does box meet rules(true/false)
      */
     public boolean checkBox(int[][] board, int col, int row, int rSize, int cSize){
         restore();  // Reset the array to false
-        HashSet<Integer> set = new HashSet<Integer>();
+        int curr = 0;
 
         int rBox = row/rSize;
         int cBox = col/cSize;
         for (int r=rSize*rBox; r < rSize*rBox+rSize; r++){
             for (int c=cSize*cBox; c < cSize*cBox+cSize; c++){
-                if(board[r][c] > 0 && !set.add(board[r][c])){
-                    return false;
-                } 
+                curr = board[r][c];
+                if(checkADT[curr]){
+                    return false;               // Once again, the checker has found a value it already marked
+                }else if(curr > 0){
+                    checkADT[curr] = true;      // Mark the found value as true.
+                }
             }
         }
         return true;

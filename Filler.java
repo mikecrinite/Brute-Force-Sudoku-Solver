@@ -83,7 +83,7 @@ public class Filler {
                                 && checker.checkBox(board, i, j, rSize, cSize)){
                                 solved = fillBoard(board, i, 0); //Next space
                         }
-                        if(!solved){
+                        if(!solved){            //If it's not solved yet, reset the space and try a new value
                             board[i][j] = 0;
                         
                             if(index < width){
@@ -96,7 +96,7 @@ public class Filler {
                 }
             }
         }
-        puzzle = copyPuzzle(board);
+        puzzle = copyPuzzle(board); // Only save the final puzzle if it is a valid solution.
         return true;
     }
     
