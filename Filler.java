@@ -1,12 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package sudoku;
-
-import java.util.ArrayList;
-
 /**
  * This class will attempt to fill a Sudoku puzzle with a solution.
  * 
@@ -28,7 +19,7 @@ public class Filler {
     int cSize;                  // The amount of columns in one block
     int rSize;                  // The amount of rows in one block
     
-    Checker checker = new Checker();
+    Checker checker = Checker.getInstance();
     
     /**
      * Driver method.
@@ -87,14 +78,12 @@ public class Filler {
                 if(board[i][j]==0){             //0 represents empty
                     while(!solved){             //While the puzzle is unsolved
                         board[i][j] = index;    //Try to fill with index
-                        if(checker.checkRow(board[i]) 
-                                && checker.checkColumn(columnToArray(board, j))
-                                && checker.checkBox(board, i, j, 
-                                        index, rSize, cSize)
-                                ){
+                        if(checker.checkRowOrCol(board[i])
+                                && checker.checkRowOrCol(columnToArray(board, j))
+                                && checker.checkBox(board, i, j, rSize, cSize)){
                                 solved = fillBoard(board, i, 0); //Next space
                         }
-                        if(!solved){
+                        if(!solved){            //If it's not solved yet, reset the space and try a new value
                             board[i][j] = 0;
                         
                             if(index < width){
@@ -107,7 +96,7 @@ public class Filler {
                 }
             }
         }
-        puzzle = copyPuzzle(board);
+        puzzle = copyPuzzle(board); // Only save the final puzzle if it is a valid solution.
         return true;
     }
     
