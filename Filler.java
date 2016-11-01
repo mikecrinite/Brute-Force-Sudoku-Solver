@@ -31,8 +31,8 @@ public class Filler {
         
         final long startTime = System.currentTimeMillis();//Take start time
         
-        Filler filler = new Filler(Filler.testPuzzle(), 2, 3);
-        filler.fillBoard(Filler.testPuzzle(), 0, 0);
+        Filler filler = new Filler(Filler.testPuzzle4(), 3, 3);
+        filler.fillBoard(Filler.testPuzzle4(), 0, 0);
         filler.printAllRows();
         
         final long endTime = System.currentTimeMillis();  //Take end time
@@ -83,6 +83,7 @@ public class Filler {
                                 && checker.checkBox(board, i, j, rSize, cSize)){
                                 solved = fillBoard(board, i, 0); //Next space
                         }
+
                         if(!solved){            //If it's not solved yet, reset the space and try a new value
                             board[i][j] = 0;
                         
@@ -96,7 +97,7 @@ public class Filler {
                 }
             }
         }
-        puzzle = copyPuzzle(board); // Only save the final puzzle if it is a valid solution.
+        puzzle = board;                 // Only save the final puzzle if it is a valid solution.
         return true;
     }
     
@@ -113,23 +114,6 @@ public class Filler {
         }
         
         return column;
-    }
-    
-    /**
-     * Copies a puzzle
-     * 
-     * @param from The puzzle from which to copy
-     * @return  The copied puzzle
-     */
-    private int[][] copyPuzzle(int[][] from){
-        int[][] copy = new int[height][width];
-        
-        for(int i = 0; i < from.length; i++){
-            for(int j = 0; j < from[i].length; j++){
-                copy[i][j] = from[i][j];
-            }
-        }
-        return copy;
     }
     
     /**
@@ -169,7 +153,7 @@ public class Filler {
     }
     
     /**
-     * Creates a smaller fake puzzle
+     * Creates the smallest solvable puzzle
      * @return A solvable 4v4 puzzle
      */
     private static int[][] testPuzzle2(){
@@ -178,17 +162,6 @@ public class Filler {
             {0, 4, 0, 0},
             {0, 0, 1, 0},
             {0, 0, 3, 2}};
-        return multi;
-    }
-    
-    /**
-     * Creates the smallest puzzle
-     * @return A solvable 2x2 puzzle
-     */
-     private static int[][] testPuzzle3(){
-        int[][] multi = new int[][]{
-            {1, 0},
-            {2, 0}};
         return multi;
     }
      
