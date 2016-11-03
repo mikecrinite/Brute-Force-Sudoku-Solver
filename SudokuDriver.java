@@ -11,7 +11,7 @@ public class SudokuDriver {
         try{
             final long startTime = System.currentTimeMillis();//Take start time
 
-            if(args.length>0){
+            if(args.length > 0){
                 File file = new File(args[0]);
                 Input input = new Input(file);
                 Filler filler = new Filler(input.getGrid(), 
@@ -25,13 +25,13 @@ public class SudokuDriver {
                     filler.printAllRows();
                 }           
             }else{
-                System.out.println("No filename found");
+                System.out.println("Please provide a filename.");
             }
 
             final long endTime = System.currentTimeMillis();  //Take end time
             System.out.println("Execution time: " + (endTime - startTime) + " ms");
         }catch(Exception e){
-            System.out.println("SudokuSolver cannot read that file.");
+            System.out.println("SudokuSolver cannot read that file, or a valid path was not provided.");
         }
         
     }
