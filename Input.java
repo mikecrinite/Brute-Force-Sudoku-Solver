@@ -31,7 +31,6 @@ public class Input {
     public Input(File f) {
         file = f;
         try {
-            //inputFile();
             readFile();
         } catch(IOException e) {
             System.out.println(e.getMessage());
@@ -79,7 +78,7 @@ public class Input {
         do { //check for comment lines
             String val = in.next();
             if (val.equals("c")) {
-                in.nextLine(); 
+                in.nextLine();
                 flag = true;
             }
             else {
