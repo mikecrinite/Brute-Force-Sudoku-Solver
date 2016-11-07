@@ -1,5 +1,3 @@
-import java.util.HashSet;
-
 /**
  * 1.0: Contains methods that check that Sudoku rules are met when numbers are added into puzzle
  *      Arrays are put into HashSets to check for duplicates in each row,column,and box.
@@ -100,5 +98,29 @@ public class Checker {
      */
     public void restore(){
         checkADT = new boolean[20];
+    }
+
+    /**
+     * Checks whether the values in the unsolved puzzle are valid to begin with.
+     *
+     * @param board The board to be checked
+     * @return <code>True</code> only if the puzzle is a valid puzzle
+     */
+    public boolean isValid(int[][] board){
+        int size;
+        if(board.length > 0){
+            size = board.length;
+        }else{
+            return false;
+        }
+
+        for(int i = 0; i < size; i++) {       //For each row
+            for(int j = 0; j < size; j++) {
+                if(board[i][j] > size) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
