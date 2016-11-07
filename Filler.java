@@ -78,9 +78,7 @@ public class Filler {
                 if(board[i][j]==0){             //0 represents empty
                     while(!solved){             //While the puzzle is unsolved
                         board[i][j] = index;    //Try to fill with index
-                        if(checker.checkRowOrCol(board[i])
-                                && checker.checkRowOrCol(columnToArray(board, j))
-                                && checker.checkBox(board, i, j, rSize, cSize)){
+                        if(spaceValid(board, i, j)){
                                 solved = fillBoard(board, i, 0); //Next space
                         }
 
@@ -99,6 +97,19 @@ public class Filler {
         }
         puzzle = board;                 // Only save the final puzzle if it is a valid solution.
         return true;
+    }
+
+    /**
+     * Utilizes Checker to determine whether the value in a particular space is valid
+     * @param board The board containing the space to be checked
+     * @param i The row the space is in
+     * @param j The column the space is in
+     * @return <code>True</code> if the space contains a valid value
+     */
+    private boolean spaceValid(int[][] board, int i, int j){
+        return (checker.checkRowOrCol(board[i])
+                && checker.checkRowOrCol(columnToArray(board, j))
+                && checker.checkBox(board, i, j, rSize, cSize));
     }
     
     /**

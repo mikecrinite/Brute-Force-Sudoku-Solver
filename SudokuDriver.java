@@ -19,13 +19,14 @@ public class SudokuDriver {
                                             input.getW());
                 //Checker is created within the Filler object
 
-                if(!filler.fillBoard(filler.puzzle, 0, 0)){
+                if(!filler.checker.isValid(filler.puzzle)
+                        || !filler.fillBoard(filler.puzzle, 0, 0)){
                     System.out.println("This puzzle has no valid solution.");
                 }else{
                     filler.printAllRows();
                 }           
             }else{
-                System.out.println("Please provide a filename.");
+                System.out.println("You must provide a filename.");
             }
 
             final long endTime = System.currentTimeMillis();  //Take end time
